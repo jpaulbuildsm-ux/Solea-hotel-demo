@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#183D32" />
+  <title>SOLÉA Boutique Hotel &amp; Retreat — Concept by J.Paul Builds</title>
+  <meta name="description" content="An independent luxury boutique hotel website concept showcasing slow hospitality, refined architecture, and bespoke retreats. Designed by J.Paul Builds." />
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="SOLÉA Boutique Hotel &amp; Retreat" />
+  <meta property="og:description" content="Slow mornings. Thoughtful details. Moments worth remembering. An independent luxury concept demo." />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1600&q=80" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       CSS VARIABLES & THEME TOKENS
+       ========================================================================== */
+    :root {
+      --color-green: #183D32;
+      --color-green-light: #235244;
+      --color-green-translucent: rgba(24, 61, 50, 0.88);
+      --color-ivory: #F7F3EA;
+      --color-ivory-warm: #EFE9DC;
+      --color-gold: #C5A46D;
+      --color-gold-hover: #B5935A;
+      --color-gold-soft: rgba(197, 164, 109, 0.18);
+      --color-charcoal: #242823;
+      --color-charcoal-muted: #535951;
+      --color-border: rgba(36, 40, 35, 0.12);
+      --color-white: #FFFFFF;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2.5rem;
+      --space-xl: 4.5rem;
+      --space-2xl: 7rem;
+
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 14px;
+      --radius-full: 9999px;
+
+      --transition-standard: all 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+      --shadow-subtle: 0 4px 20px rgba(24, 61, 50, 0.06);
+      --shadow-elevated: 0 16px 36px rgba(24, 61, 50, 0.12);
+      --container-max: 1240px;
+    }
+
+    /* ==========================================================================
+       RESET & BASE STYLES
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--color-ivory);
+      color: var(--color-charcoal);
+      line-height: 1.65;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition-standard);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    input, select, textarea {
+      font-family: var(--font-sans);
+      font-size: 0.95rem;
+    }
+
+    /* Accessibility Focus Rings */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--color-gold);
+      outline-offset: 3px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    @media (min-width: 768px) {
+      .container {
+        padding: 0 2rem;
+      }
+    }
+
+    /* Typography Utilities */
+    .heading-display {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+
+    .heading-section {
+      font-family: var(--font-serif);
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--color-green);
+    }
+
+    .sub-tagline {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      color: var(--color-gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .lead-text {
+      font-size: 1.05rem;
+      color: var(--color-charcoal-muted);
+      max-width: 600px;
+      font-weight: 300;
+    }
+
+    .badge-fictional {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.2rem 0.55rem;
+      background: rgba(36, 40, 35, 0.06);
+      border-radius: var(--radius-sm);
+      color: var(--color-charcoal-muted);
+    }
+
+    /* ==========================================================================
+       CONCEPT NOTICE BANNER
+       ========================================================================== */
+    .concept-notice-bar {
+      background-color: var(--color-charcoal);
+      color: var(--color-ivory);
+      font-size: 0.75rem;
+      letter-spacing: 0.03em;
+      text-align: center;
+      padding: 0.55rem 1rem;
+      position: relative;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .concept-notice-bar strong {
+      color: var(--color-gold);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      background: rgba(247, 243, 234, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--color-border);
+      transition: var(--transition-standard);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .brand-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-decoration: none;
+    }
+
+    .brand-logo .brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      color: var(--color-green);
+      line-height: 1;
+    }
+
+    .brand-logo .brand-sub {
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-gold);
+      margin-top: 3px;
+    }
+
+    .nav-desktop {
+      display: none;
+    }
+
+    @media (min-width: 992px) {
+      .nav-desktop {
+        display: flex;
+        align-items: center;
+        gap: 2.2rem;
+      }
+
+      .nav-desktop a {
+        font-size: 0.84rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 500;
+        color: var(--color-charcoal);
+        position: relative;
+        padding: 0.4rem 0;
+      }
+
+      .nav-desktop a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background-color: var(--color-gold);
+        transition: width 0.3s ease;
+      }
+
+      .nav-desktop a:hover::after,
+      .nav-desktop a.active::after {
+        width: 100%;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.7rem;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: var(--radius-sm);
+      transition: var(--transition-standard);
+      cursor: pointer;
+      text-align: center;
+      min-height: 48px;
+    }
+
+    .btn-gold {
+      background-color: var(--color-gold);
+      color: var(--color-white);
+    }
+
+    .btn-gold:hover {
+      background-color: var(--color-gold-hover);
+      color: var(--color-white);
+      transform: translateY(-1px);
+    }
+
+    .btn-outline {
+      border: 1px solid var(--color-green);
+      color: var(--color-green);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--color-green);
+      color: var(--color-ivory);
+    }
+
+    .btn-ghost-light {
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      color: var(--color-white);
+      background: rgba(24, 61, 50, 0.35);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-ghost-light:hover {
+      background: var(--color-white);
+      color: var(--color-green);
+      border-color: var(--color-white);
+    }
+
+    .btn-sm {
+      padding: 0.55rem 1.15rem;
+      font-size: 0.74rem;
+      min-height: 40px;
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      background: transparent;
+    }
+
+    .menu-toggle span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--color-green);
+      transition: var(--transition-standard);
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (min-width: 992px) {
+      .menu-toggle {
+        display: none;
+      }
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      top: 105px;
+      left: 0;
+      width: 100%;
+      height: calc(100vh - 105px);
+      background-color: var(--color-ivory);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transform: translateY(-110%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 85;
+      overflow-y: auto;
+      border-bottom: 2px solid var(--color-gold);
+    }
+
+    .mobile-drawer.open {
+      transform: translateY(0);
+    }
+
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 1.4rem;
+    }
+
+    .mobile-nav-links a {
+      font-family: var(--font-serif);
+      font-size: 1.7rem;
+      color: var(--color-green);
+      border-bottom: 1px solid rgba(24, 61, 50, 0.08);
+      padding-bottom: 0.6rem;
+    }
+
+    .mobile-drawer-footer {
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--color-border);
+      font-size: 0.8rem;
+      color: var(--color-charcoal-muted);
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero {
+      position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      overflow: hidden;
+      padding: 5rem 0 7rem;
+    }
+
+    .hero-media {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.78);
+      transform: scale(1.02);
+      animation: heroZoom 14s infinite alternate ease-in-out;
+    }
+
+    @keyframes heroZoom {
+      0% { transform: scale(1.0); }
+      100% { transform: scale(1.05); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        rgba(24, 61, 50, 0.5) 0%,
+        rgba(24, 61, 50, 0.25) 40%,
+        rgba(24, 61, 50, 0.8) 100%
+      );
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero-pretitle {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--color-gold);
+      margin-bottom: 1.25rem;
+      display: inline-block;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 6.2vw, 5.2rem);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+      text-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+    }
+
+    .hero-lead {
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      font-weight: 300;
+      max-width: 620px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.1rem;
+    }
+
+    /* Availability Search Engine Bar */
+    .availability-bar-wrap {
+      position: relative;
+      z-index: 10;
+      margin-top: -3.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .search-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-elevated);
+      padding: 1.5rem;
+      border: 1px solid rgba(197, 164, 109, 0.25);
+    }
+
+    .search-form {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+    }
+
+    @media (min-width: 768px) {
+      .search-form {
+        grid-template-columns: repeat(2, 1fr) auto;
+        align-items: flex-end;
+      }
+    }
+
+    @media (min-width: 992px) {
+      .search-form {
+        grid-template-columns: 1.2fr 1.2fr 1fr auto;
+      }
+    }
+
+    .input-field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .input-field-group label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--color-charcoal-muted);
+      font-weight: 600;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .input-wrapper input,
+    .input-wrapper select {
+      width: 100%;
+      height: 48px;
+      padding: 0.5rem 0.85rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background-color: var(--color-ivory);
+      color: var(--color-charcoal);
+      transition: var(--transition-standard);
+    }
+
+    .input-wrapper input:focus,
+    .input-wrapper select:focus {
+      border-color: var(--color-gold);
+      background-color: var(--color-white);
+    }
+
+    .search-note {
+      font-size: 0.7rem;
+      color: var(--color-charcoal-muted);
+      text-align: center;
+      margin-top: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================================================
+       SECTION COMMON STYLES
+       ========================================================================== */
+    .section-padding {
+      padding: var(--space-xl) 0;
+    }
+
+    @media (min-width: 992px) {
+      .section-padding {
+        padding: var(--space-2xl) 0;
+      }
+    }
+
+    .section-head {
+      margin-bottom: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .section-head.text-center {
+      align-items: center;
+      text-align: center;
+    }
+
+    .section-head.text-center .lead-text {
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       SECTION: STAY (SUITES & ROOMS)
+       ========================================================================== */
+    .suites-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.25rem;
+    }
+
+    @media (min-width: 900px) {
+      .suites-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .suite-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-standard);
+      position: relative;
+    }
+
+    .suite-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-elevated);
+      border-color: var(--color-gold-soft);
+    }
+
+    .suite-image-container {
+      position: relative;
+      height: 270px;
+      background-color: var(--color-ivory-warm);
+      overflow: hidden;
+    }
+
+    .suite-image-container img {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease;
+    }
+
+    .suite-card:hover .suite-image-container img {
+      transform: scale(1.05);
+    }
+
+    .suite-tag {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--color-green-translucent);
+      backdrop-filter: blur(4px);
+      color: var(--color-white);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.8rem;
+      border-radius: var(--radius-sm);
+    }
+
+    .suite-body {
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .suite-header {
+      margin-bottom: 0.85rem;
+    }
+
+    .suite-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--color-green);
+      line-height: 1.2;
+    }
+
+    .suite-desc {
+      font-size: 0.92rem;
+      color: var(--color-charcoal-muted);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .amenities-list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .amenity-chip {
+      font-size: 0.72rem;
+      padding: 0.25rem 0.65rem;
+      background-color: var(--color-ivory);
+      border-radius: var(--radius-sm);
+      color: var(--color-charcoal);
+      border: 1px solid rgba(36, 40, 35, 0.08);
+    }
+
+    .suite-pricing-bar {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--color-border);
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .price-value {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--color-green);
+    }
+
+    .price-unit {
+      font-size: 0.78rem;
+      color: var(--color-charcoal-muted);
+    }
+
+    .suite-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.65rem;
+    }
+
+    /* ==========================================================================
+       SECTION: DINING
+       ========================================================================== */
+    .dining-section {
+      background-color: var(--color-ivory-warm);
+    }
+
+    .editorial-feature {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+
+    @media (min-width: 900px) {
+      .editorial-feature {
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+    }
+
+    .editorial-img-frame {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-elevated);
+      max-height: 480px;
+    }
+
+    .editorial-img-frame img {
+      width: 100%;
+      height: 100%;
+      min-height: 340px;
+    }
+
+    .quote-callout {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      left: 1.5rem;
+      background: var(--color-green-translucent);
+      backdrop-filter: blur(8px);
+      padding: 1.2rem;
+      border-radius: var(--radius-sm);
+      color: var(--color-white);
+      border-left: 3px solid var(--color-gold);
+    }
+
+    .quote-callout p {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      line-height: 1.35;
+    }
+
+    .dining-schedule {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .dining-schedule {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .dining-card {
+      background: var(--color-white);
+      padding: 2rem 1.6rem;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      transition: var(--transition-standard);
+    }
+
+    .dining-card:hover {
+      border-color: var(--color-gold);
+      transform: translateY(-4px);
+    }
+
+    .dining-time {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-gold);
+      margin-bottom: 0.5rem;
+      display: block;
+      font-weight: 600;
+    }
+
+    .dining-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--color-green);
+      margin-bottom: 0.75rem;
+    }
+
+    .dining-card p {
+      font-size: 0.9rem;
+      color: var(--color-charcoal-muted);
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .sample-menu-items {
+      list-style: none;
+      font-size: 0.82rem;
+      border-top: 1px dashed var(--color-border);
+      padding-top: 0.85rem;
+      color: var(--color-charcoal);
+    }
+
+    .sample-menu-items li {
+      margin-bottom: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* ==========================================================================
+       SECTION: EXPERIENCES
+       ========================================================================== */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .experience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1100px) {
+      .experience-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .exp-item {
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+      color: var(--color-white);
+      transition: var(--transition-standard);
+    }
+
+    .exp-item::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(24, 61, 50, 0.1) 0%, rgba(24, 61, 50, 0.88) 85%);
+      z-index: 2;
+      transition: var(--transition-standard);
+    }
+
+    .exp-item:hover::before {
+      background: linear-gradient(180deg, rgba(24, 61, 50, 0.3) 0%, rgba(24, 61, 50, 0.95) 90%);
+    }
+
+    .exp-bg-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+      transition: transform 0.6s ease;
+    }
+
+    .exp-item:hover .exp-bg-img {
+      transform: scale(1.08);
+    }
+
+    .exp-content {
+      position: relative;
+      z-index: 3;
+    }
+
+    .exp-category {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-gold);
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+
+    .exp-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .exp-desc {
+      font-size: 0.84rem;
+      opacity: 0.88;
+      line-height: 1.45;
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       SECTION: GALLERY & LIGHTBOX
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.25rem;
+      }
+    }
+
+    .gallery-thumbnail {
+      position: relative;
+      height: 240px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      cursor: pointer;
+      background-color: var(--color-ivory-warm);
+    }
+
+    @media (min-width: 768px) {
+      .gallery-thumbnail {
+        height: 280px;
+      }
+      .gallery-thumbnail.span-2 {
+        grid-column: span 2;
+      }
+    }
+
+    .gallery-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-overlay-badge {
+      position: absolute;
+      inset: 0;
+      background: rgba(24, 61, 50, 0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: var(--color-white);
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .gallery-thumbnail:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-thumbnail:hover .gallery-overlay-badge {
+      opacity: 1;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(16, 26, 22, 0.94);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+    }
+
+    .lightbox-container {
+      position: relative;
+      max-width: 960px;
+      width: 100%;
+      max-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-img-wrapper {
+      position: relative;
+      max-height: 75vh;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .lightbox-image {
+      max-height: 75vh;
+      width: auto;
+      max-width: 100%;
+      border-radius: var(--radius-sm);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      margin-top: 1rem;
+      color: var(--color-ivory);
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+      text-align: center;
+    }
+
+    .lightbox-btn {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.15);
+      color: var(--color-white);
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition-standard);
+      z-index: 1010;
+    }
+
+    .lightbox-btn:hover {
+      background: var(--color-gold);
+    }
+
+    .lightbox-close {
+      top: -55px;
+      right: 0;
+    }
+
+    .lightbox-prev {
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox-next {
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* ==========================================================================
+       SECTION: ABOUT (CONCEPT STORY)
+       ========================================================================== */
+    .about-section {
+      background-color: var(--color-green);
+      color: var(--color-ivory);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3.5rem;
+      align-items: center;
+    }
+
+    @media (min-width: 900px) {
+      .about-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .about-story .sub-tagline {
+      color: var(--color-gold);
+    }
+
+    .about-story h2 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--color-white);
+    }
+
+    .about-story p {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: rgba(247, 243, 234, 0.85);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    .creator-attribution-badge {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(197, 164, 109, 0.35);
+      border-radius: var(--radius-sm);
+    }
+
+    .creator-attribution-badge h5 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--color-gold);
+      margin-bottom: 0.3rem;
+    }
+
+    .creator-attribution-badge p {
+      font-size: 0.82rem;
+      color: rgba(247, 243, 234, 0.75);
+      margin-bottom: 0;
+      line-height: 1.45;
+    }
+
+    .about-visual-composition {
+      position: relative;
+    }
+
+    .about-main-img {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      width: 100%;
+      height: 480px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .about-accent-card {
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      background: var(--color-charcoal);
+      color: var(--color-ivory);
+      padding: 1.5rem;
+      border-radius: var(--radius-sm);
+      border-left: 4px solid var(--color-gold);
+      max-width: 250px;
+      box-shadow: var(--shadow-elevated);
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .about-accent-card {
+        display: block;
+      }
+    }
+
+    .about-accent-card span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--color-gold);
+    }
+
+    .about-accent-card strong {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      display: block;
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================================
+       SECTION: CONTACT & ENQUIRIES
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    @media (min-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 0.9fr 1.1fr;
+      }
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .concept-disclaimer-box {
+      background: var(--color-ivory-warm);
+      border-radius: var(--radius-md);
+      padding: 1.75rem;
+      border-left: 3px solid var(--color-gold);
+    }
+
+    .concept-disclaimer-box h4 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--color-green);
+      margin-bottom: 0.6rem;
+    }
+
+    .concept-disclaimer-box p {
+      font-size: 0.88rem;
+      color: var(--color-charcoal-muted);
+      line-height: 1.55;
+    }
+
+    .contact-channel-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      background: var(--color-white);
+      border: 1px solid var(--color-border);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--color-gold);
+    }
+
+    .contact-channel-item h5 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-charcoal-muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-channel-item p {
+      font-size: 0.98rem;
+      color: var(--color-charcoal);
+      font-weight: 500;
+    }
+
+    .enquiry-form-card {
+      background: var(--color-white);
+      border-radius: var(--radius-md);
+      padding: 2.2rem 1.75rem;
+      box-shadow: var(--shadow-subtle);
+      border: 1px solid var(--color-border);
+    }
+
+    @media (min-width: 768px) {
+      .enquiry-form-card {
+        padding: 2.75rem 2.25rem;
+      }
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (min-width: 600px) {
+      .form-row.two-col {
+        grid-template-columns: 1fr 1fr;
+      }
+      .form-row.three-col {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .form-group label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 600;
+      color: var(--color-charcoal);
+    }
+
+    .form-control {
+      width: 100%;
+      height: 48px;
+      padding: 0.6rem 0.9rem;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      background: var(--color-ivory);
+      color: var(--color-charcoal);
+      transition: var(--transition-standard);
+    }
+
+    textarea.form-control {
+      height: 120px;
+      resize: vertical;
+      padding: 0.8rem 0.9rem;
+    }
+
+    .form-control:focus {
+      border-color: var(--color-gold);
+      background: var(--color-white);
+    }
+
+    .form-control.is-invalid {
+      border-color: #D34538;
+      background-color: #FFF8F7;
+    }
+
+    .error-msg {
+      font-size: 0.72rem;
+      color: #D34538;
+      display: none;
+    }
+
+    .error-msg.visible {
+      display: block;
+    }
+
+    .submit-wrap {
+      margin-top: 1.75rem;
+    }
+
+    .demo-submission-result {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      border-radius: var(--radius-sm);
+      background-color: #F1F6F3;
+      border: 1px solid #C1DEC8;
+      display: none;
+    }
+
+    .demo-submission-result.visible {
+      display: block;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .demo-submission-result h4 {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      color: var(--color-green);
+      margin-bottom: 0.4rem;
+    }
+
+    .demo-submission-result p {
+      font-size: 0.85rem;
+      color: var(--color-charcoal);
+      line-height: 1.5;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       SUITE DETAIL MODAL
+       ========================================================================== */
+    .suite-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(16, 26, 22, 0.85);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .suite-modal.active {
+      display: flex;
+    }
+
+    .suite-modal-dialog {
+      background: var(--color-white);
+      max-width: 680px;
+      width: 100%;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .suite-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      background: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-subtle);
+      z-index: 10;
+      cursor: pointer;
+    }
+
+    .suite-modal-img {
+      height: 280px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .suite-modal-body {
+      padding: 2rem;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .site-footer {
+      background-color: var(--color-charcoal);
+      color: var(--color-ivory);
+      padding: 4.5rem 0 2.5rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-top {
+        grid-template-columns: 1.5fr 1fr 1fr;
+      }
+    }
+
+    .footer-brand .brand-name {
+      color: var(--color-ivory);
+    }
+
+    .footer-desc {
+      font-size: 0.88rem;
+      color: rgba(247, 243, 234, 0.7);
+      margin-top: 1rem;
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .footer-heading {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--color-gold);
+      margin-bottom: 1.25rem;
+      font-weight: 600;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      font-size: 0.88rem;
+      color: rgba(247, 243, 234, 0.75);
+    }
+
+    .footer-links a:hover {
+      color: var(--color-gold);
+      padding-left: 4px;
+    }
+
+    .footer-bottom {
+      padding-top: 2.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: center;
+      text-align: center;
+      font-size: 0.78rem;
+      color: rgba(247, 243, 234, 0.55);
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+    }
+
+    .builder-tag {
+      color: var(--color-gold);
+      font-weight: 500;
+    }
+
+    /* Back to top button */
+    .back-to-top {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      background: var(--color-green);
+      color: var(--color-gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--shadow-elevated);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: var(--transition-standard);
+      z-index: 80;
+      border: 1px solid var(--color-gold-soft);
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+      background: var(--color-gold);
+      color: var(--color-white);
+    }
+
+    /* Fallback image placeholder */
+    .img-fallback {
+      background: #E5E0D5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #6C7268;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Header reservation CTA: keep hidden on narrow screens, reveal on desktop. */
+    .header-reserve-btn { display: none; }
+    @media (min-width: 600px) {
+      .header-reserve-btn { display: inline-flex; }
+    }
+
+    /* Small-screen polish and safer modal/image sizing. */
+    .hero-media img { width: 100%; height: 100%; }
+    .gallery-thumbnail { cursor: zoom-in; }
+    .gallery-thumbnail:focus-visible { outline: 3px solid var(--color-gold); outline-offset: 4px; }
+    .suite-modal, .lightbox-modal { overscroll-behavior: contain; }
+    .suite-modal-dialog, .lightbox-content { max-height: calc(100dvh - 2rem); overflow-y: auto; }
+    @media (max-width: 480px) {
+      .about-main-img { height: 320px; }
+      .enquiry-form-card { padding: 1.35rem 1rem; }
+      .hero-title { font-size: clamp(2.6rem, 12vw, 4.2rem); }
+    }
+
+    /* Respect reduced-motion preferences */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================================================
+       ANNOUNCEMENT / CONCEPT DISCLAIMER BAR
+       ======================================================================== -->
+  <div class="concept-notice-bar" role="region" aria-label="Independent Concept Notice">
+    Independent concept demo &mdash; fictional hotel, illustrative content and prices. Designed by <strong>J.Paul Builds</strong>.
+  </div>
+
+  <!-- ========================================================================
+       NAVIGATION
+       ======================================================================== -->
+  <header class="site-header" id="header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="#home" class="brand-logo" aria-label="SOLÉA Boutique Hotel &amp; Retreat Home">
+          <span class="brand-name">SOLÉA</span>
+          <span class="brand-sub">Boutique Hotel &amp; Retreat</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="nav-desktop" aria-label="Main Navigation">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#stay" class="nav-link">Stay</a>
+          <a href="#dining" class="nav-link">Dining</a>
+          <a href="#experiences" class="nav-link">Experiences</a>
+          <a href="#gallery" class="nav-link">Gallery</a>
+          <a href="#about" class="nav-link">About</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="#contact" class="btn btn-gold btn-sm header-reserve-btn">
+            Reserve Concept
+          </a>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Toggle Navigation Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Mobile Navigation">
+    <nav class="mobile-nav-links">
+      <a href="#home" class="mobile-link">Home</a>
+      <a href="#stay" class="mobile-link">Stay &amp; Suites</a>
+      <a href="#dining" class="mobile-link">Dining &amp; Lounge</a>
+      <a href="#experiences" class="mobile-link">Experiences</a>
+      <a href="#gallery" class="mobile-link">Visual Gallery</a>
+      <a href="#about" class="mobile-link">The Concept</a>
+      <a href="#contact" class="mobile-link">Enquiries</a>
+    </nav>
+    <div class="mobile-drawer-footer">
+      <p style="margin-bottom: 0.75rem;"><strong>SOLÉA Concept Demo</strong></p>
+      <p>Demonstration portfolio build by J.Paul Builds. Illustrative fictional hospitality presentation.</p>
+    </div>
+  </aside>
+
+  <main>
+    <!-- ======================================================================
+         A. HOME & HERO
+         ====================================================================== -->
+    <section class="hero" id="home">
+      <div class="hero-media">
+        <img 
+          src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80" 
+          alt="Cinematic coastal boutique resort infinity pool at dusk" 
+          loading="eager"
+          onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Hero Architectural Scenery ]';"
+        />
+      </div>
+      <div class="hero-overlay"></div>
+      
+      <div class="container">
+        <div class="hero-content">
+          <span class="hero-pretitle">Bespoke Coastal Sanctuary</span>
+          <h1 class="heading-display hero-title">A Stay Beyond the Ordinary.</h1>
+          <p class="hero-lead">Slow mornings. Thoughtful details. Moments worth remembering.</p>
+          <div class="hero-cta-group">
+            <a href="#stay" class="btn btn-gold">Explore Our Suites</a>
+            <a href="#contact" class="btn btn-ghost-light">Enquire About a Stay</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Availability Search Interface -->
+    <div class="container availability-bar-wrap">
+      <div class="search-card">
+        <form class="search-form" id="quickSearchForm" onsubmit="handleAvailabilitySearch(event)">
+          <div class="input-field-group">
+            <label for="searchArrival">Arrival Date</label>
+            <div class="input-wrapper">
+              <input type="date" id="searchArrival" required />
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label for="searchDeparture">Departure Date</label>
+            <div class="input-wrapper">
+              <input type="date" id="searchDeparture" required />
+            </div>
+          </div>
+
+          <div class="input-field-group">
+            <label for="searchGuests">Guests</label>
+            <div class="input-wrapper">
+              <select id="searchGuests">
+                <option value="1">1 Guest</option>
+                <option value="2" selected>2 Guests</option>
+                <option value="3">3 Guests</option>
+                <option value="4">4 Guests</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-gold" style="width: 100%;">
+            Check Suites
+          </button>
+        </form>
+        <p class="search-note">Demonstration interface &bull; Fictional sample rates displayed below in Kenya Shillings (KSh)</p>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         B. STAY (ROOM CATEGORIES)
+         ====================================================================== -->
+    <section class="section-padding" id="stay">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="sub-tagline">Rest &amp; Rejuvenation</span>
+          <h2 class="heading-section">Curated Sanctuary Suites</h2>
+          <p class="lead-text">
+            Designed with natural textures, tactile stone, and breezy coastal timber. Every suite is oriented toward peaceful privacy and gentle light.
+          </p>
+        </div>
+
+        <div class="suites-grid">
+          <!-- Room 1: Garden Suite -->
+          <article class="suite-card">
+            <div class="suite-image-container">
+              <span class="suite-tag">Garden Enclave</span>
+              <img 
+                src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80" 
+                alt="Intimate bedroom suite opening onto lush private garden patio"
+                loading="lazy"
+                onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Garden Suite View ]';"
+              />
+            </div>
+            <div class="suite-body">
+              <div class="suite-header">
+                <h3 class="suite-title">Garden Suite</h3>
+              </div>
+              <p class="suite-desc">
+                Surrounded by indigenous coastal palm flora with a secluded stone terrace, outdoor rainfall shower, and handcrafted teak furnishings.
+              </p>
+              <ul class="amenities-list">
+                <li class="amenity-chip">55 m²</li>
+                <li class="amenity-chip">King Bed</li>
+                <li class="amenity-chip">Private Veranda</li>
+                <li class="amenity-chip">Artisan Bar</li>
+              </ul>
+              <div class="suite-pricing-bar">
+                <div>
+                  <div class="price-value">KSh 38,500</div>
+                  <div class="price-unit">per night <span class="badge-fictional">Illustrative rate</span></div>
+                </div>
+              </div>
+              <div class="suite-actions">
+                <button 
+                  type="button" 
+                  class="btn btn-outline btn-sm" 
+                  onclick="openSuiteModal('Garden Suite', '55 m² suite surrounded by coastal landscaping. Features handcrafted king canopy bed, terrazzo soaking tub, outdoor rainfall shower, high-speed fibre Wi-Fi, and complimentary organic botanical apothecary.', 'KSh 38,500', 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80')"
+                >
+                  View Details
+                </button>
+                <button type="button" class="btn btn-gold btn-sm" onclick="selectSuiteForEnquiry('Garden Suite')">
+                  Enquire
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Room 2: Signature Suite -->
+          <article class="suite-card">
+            <div class="suite-image-container">
+              <span class="suite-tag">Bespoke Comfort</span>
+              <img 
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" 
+                alt="Bright luxury suite featuring minimalist wood detailing and daybed"
+                loading="lazy"
+                onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Signature Suite View ]';"
+              />
+            </div>
+            <div class="suite-body">
+              <div class="suite-header">
+                <h3 class="suite-title">Signature Suite</h3>
+              </div>
+              <p class="suite-desc">
+                Elevated ceilings, a sunken lounge alcove, freestanding limestone soaking tub, and bespoke linen robes curated for restorative afternoons.
+              </p>
+              <ul class="amenities-list">
+                <li class="amenity-chip">78 m²</li>
+                <li class="amenity-chip">Ocean Peek</li>
+                <li class="amenity-chip">Sunken Lounge</li>
+                <li class="amenity-chip">Soaking Tub</li>
+              </ul>
+              <div class="suite-pricing-bar">
+                <div>
+                  <div class="price-value">KSh 52,000</div>
+                  <div class="price-unit">per night <span class="badge-fictional">Illustrative rate</span></div>
+                </div>
+              </div>
+              <div class="suite-actions">
+                <button 
+                  type="button" 
+                  class="btn btn-outline btn-sm" 
+                  onclick="openSuiteModal('Signature Suite', 'Generous 78 m² haven with sunken living lounge, custom sound system, curated vinyl records, bespoke tea ceremony station, and open-plan spa bathroom with deep limestone tub.', 'KSh 52,000', 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80')"
+                >
+                  View Details
+                </button>
+                <button type="button" class="btn btn-gold btn-sm" onclick="selectSuiteForEnquiry('Signature Suite')">
+                  Enquire
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Room 3: Horizon Suite -->
+          <article class="suite-card">
+            <div class="suite-image-container">
+              <span class="suite-tag">Panoramic Vistas</span>
+              <img 
+                src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=80" 
+                alt="Penthouse oceanfront horizon suite with expansive wrap-around deck"
+                loading="lazy"
+                onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Horizon Suite View ]';"
+              />
+            </div>
+            <div class="suite-body">
+              <div class="suite-header">
+                <h3 class="suite-title">Horizon Suite</h3>
+              </div>
+              <p class="suite-desc">
+                The pinnacle retreat. Uninterrupted sea breezes, a wrap-around teak observation deck, outdoor daybed, and private twilight plunge pool.
+              </p>
+              <ul class="amenities-list">
+                <li class="amenity-chip">110 m²</li>
+                <li class="amenity-chip">Plunge Pool</li>
+                <li class="amenity-chip">Panoramic Sea</li>
+                <li class="amenity-chip">Butler Bar</li>
+              </ul>
+              <div class="suite-pricing-bar">
+                <div>
+                  <div class="price-value">KSh 76,000</div>
+                  <div class="price-unit">per night <span class="badge-fictional">Illustrative rate</span></div>
+                </div>
+              </div>
+              <div class="suite-actions">
+                <button 
+                  type="button" 
+                  class="btn btn-outline btn-sm" 
+                  onclick="openSuiteModal('Horizon Suite', '110 m² premier top-tier suite offering private plunge pool on a suspended balcony, panoramic sunrise views, private dining table, walk-in dressing salon, and round-the-clock host assistance.', 'KSh 76,000', 'https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=900&q=80')"
+                >
+                  View Details
+                </button>
+                <button type="button" class="btn btn-gold btn-sm" onclick="selectSuiteForEnquiry('Horizon Suite')">
+                  Enquire
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         C. DINING
+         ====================================================================== -->
+    <section class="section-padding dining-section" id="dining">
+      <div class="container">
+        <div class="editorial-feature">
+          <div class="editorial-text">
+            <span class="sub-tagline">Culinary Craft &amp; Terroir</span>
+            <h2 class="heading-section">The Palms Veranda &amp; Hearth</h2>
+            <p class="lead-text" style="margin-bottom: 1.5rem;">
+              Dining at SOLÉA celebrates seasonal coastal produce, wild honey from nearby hills, line-caught seafood, and sun-ripened orchard botanicals.
+            </p>
+            <p style="font-size: 0.95rem; color: var(--color-charcoal-muted); margin-bottom: 1.75rem;">
+              Whether taking your first espresso under morning palm fronds or settling into slow dusk cocktails infused with local spices, our open-air tables are designed for lingering.
+            </p>
+            <a href="#contact" class="btn btn-outline">Enquire for Table Reservation</a>
+          </div>
+
+          <div class="editorial-img-frame">
+            <img 
+              src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80" 
+              alt="Artisanal coastal dining presentation on ceramic stoneware"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Veranda Dining Table ]';"
+            />
+            <div class="quote-callout">
+              <p>&ldquo;Simplicity, honest firewood ember smoke, and ingredients harvested at daybreak.&rdquo;</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="dining-schedule">
+          <div class="dining-card">
+            <span class="dining-time">07:00 &mdash; 11:00</span>
+            <h4>Morning Pantry</h4>
+            <p>Sourdough from wild fermentation, house-pressed tropical juices, cold brew, and fresh orchard fruit bowls.</p>
+            <ul class="sample-menu-items">
+              <li><span>Cardamom Brioche &amp; Wild Honey</span> <span>Sample</span></li>
+              <li><span>Poached Eggs, Avocado &amp; Za'atar</span> <span>Sample</span></li>
+              <li><span>Cold Pressed Mango &amp; Ginger</span> <span>Sample</span></li>
+            </ul>
+          </div>
+
+          <div class="dining-card">
+            <span class="dining-time">12:30 &mdash; 16:30</span>
+            <h4>Poolside Veranda</h4>
+            <p>Crisp heirloom salads, ceviche cured with finger lime, wood-fired flatbreads, and chilled rosé.</p>
+            <ul class="sample-menu-items">
+              <li><span>Yellowfin Tuna Crudo &amp; Chili Lime</span> <span>Sample</span></li>
+              <li><span>Blistered Fig &amp; Goat Curd Flatbread</span> <span>Sample</span></li>
+              <li><span>Charred Greens &amp; Tahini Crisp</span> <span>Sample</span></li>
+            </ul>
+          </div>
+
+          <div class="dining-card">
+            <span class="dining-time">18:30 &mdash; 22:30</span>
+            <h4>The Hearth at Dusk</h4>
+            <p>Intimate candlelit dinners centered around ember grills, seasonal catches, and low-intervention wines.</p>
+            <ul class="sample-menu-items">
+              <li><span>Whole Roasted Red Snapper</span> <span>Sample</span></li>
+              <li><span>Swahili Spiced Lamb Cutlets</span> <span>Sample</span></li>
+              <li><span>Coconut Panna Cotta &amp; Passionfruit</span> <span>Sample</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         D. EXPERIENCES
+         ====================================================================== -->
+    <section class="section-padding" id="experiences">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="sub-tagline">Rhythms of the Retreat</span>
+          <h2 class="heading-section">Immersive Moments</h2>
+          <p class="lead-text">
+            Thoughtfully curated rituals to slow down your pace. All activity times and excursions are fictional concepts created for presentation.
+          </p>
+        </div>
+
+        <div class="experience-grid">
+          <div class="exp-item">
+            <img 
+              src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=700&q=80" 
+              alt="Serene stone infinity pool overlooking coastal vegetation" 
+              class="exp-bg-img"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback');"
+            />
+            <div class="exp-content">
+              <span class="exp-category">Wellness</span>
+              <h3 class="exp-title">Mineral Pool Sanctuary</h3>
+              <p class="exp-desc">Heated natural salt-water pool encircled by basalt loungers and quiet shade trees.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <img 
+              src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=80" 
+              alt="Minimalist botanical spa treatment space" 
+              class="exp-bg-img"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback');"
+            />
+            <div class="exp-content">
+              <span class="exp-category">Restoration</span>
+              <h3 class="exp-title">Botanical Spa Pavilion</h3>
+              <p class="exp-desc">Herbal compresses and essential oils extracted from coastal cedar, eucalyptus, and wild jasmine.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <img 
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" 
+              alt="Soft white sand beach at low tide with calm ocean water" 
+              class="exp-bg-img"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback');"
+            />
+            <div class="exp-content">
+              <span class="exp-category">Outdoors</span>
+              <h3 class="exp-title">Tidal Sandbank Walks</h3>
+              <p class="exp-desc">Morning low-tide barefoot walks across pristine exposed ocean shallows with a naturalist.</p>
+            </div>
+          </div>
+
+          <div class="exp-item">
+            <img 
+              src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=700&q=80" 
+              alt="Quiet library corner with warm lamplight and reading chair" 
+              class="exp-bg-img"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback');"
+            />
+            <div class="exp-content">
+              <span class="exp-category">Solitude</span>
+              <h3 class="exp-title">The Cedar Library</h3>
+              <p class="exp-desc">An unhurried space filled with African literature, architecture monographs, and single-origin teas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         E. VISUAL GALLERY & LIGHTBOX
+         ====================================================================== -->
+    <section class="section-padding" id="gallery" style="background-color: var(--color-ivory);">
+      <div class="container">
+        <div class="section-head text-center">
+          <span class="sub-tagline">Visual Diary</span>
+          <h2 class="heading-section">Atmospheres of SOLÉA</h2>
+          <p class="lead-text">
+            Select any photograph to view in high resolution.
+          </p>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="gallery-thumbnail span-2" onclick="openLightbox(0)" role="button" tabindex="0" aria-label="Open gallery image 1">
+            <img 
+              src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1200&q=80" 
+              alt="Sunlit architectural terrace overlooking the sea at golden hour"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Architecture Terrace ]';"
+            />
+            <div class="gallery-overlay-badge">Expand Image</div>
+          </div>
+
+          <div class="gallery-thumbnail" onclick="openLightbox(1)" role="button" tabindex="0" aria-label="Open gallery image 2">
+            <img 
+              src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=800&q=80" 
+              alt="Pool umbrellas and coastal cabana seating"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Pool Cabana ]';"
+            />
+            <div class="gallery-overlay-badge">Expand Image</div>
+          </div>
+
+          <div class="gallery-thumbnail" onclick="openLightbox(2)" role="button" tabindex="0" aria-label="Open gallery image 3">
+            <img 
+              src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" 
+              alt="Morning artisanal coffee served on linen tablecloth"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Morning Coffee ]';"
+            />
+            <div class="gallery-overlay-badge">Expand Image</div>
+          </div>
+
+          <div class="gallery-thumbnail" onclick="openLightbox(3)" role="button" tabindex="0" aria-label="Open gallery image 4">
+            <img 
+              src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=800&q=80" 
+              alt="Minimalist suite interior with stone textures and linen"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Suite Interior ]';"
+            />
+            <div class="gallery-overlay-badge">Expand Image</div>
+          </div>
+
+          <div class="gallery-thumbnail" onclick="openLightbox(4)" role="button" tabindex="0" aria-label="Open gallery image 5">
+            <img 
+              src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=800&q=80" 
+              alt="Coastline shoreline with gentle waves at sunset"
+              loading="lazy"
+              onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Coastal Shoreline ]';"
+            />
+            <div class="gallery-overlay-badge">Expand Image</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox Modal Component -->
+    <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Expanded Image Viewer">
+      <div class="lightbox-container">
+        <button class="lightbox-btn lightbox-close" onclick="closeLightbox()" aria-label="Close Lightbox">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <button class="lightbox-btn lightbox-prev" onclick="prevLightboxImage()" aria-label="Previous Image">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <button class="lightbox-btn lightbox-next" onclick="nextLightboxImage()" aria-label="Next Image">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+        <div class="lightbox-img-wrapper">
+          <img src="" alt="" class="lightbox-image" id="lightboxImage" />
+        </div>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+    </div>
+
+    <!-- ======================================================================
+         F. ABOUT (THE CONCEPT STORY)
+         ====================================================================== -->
+    <section class="section-padding about-section" id="about">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-story">
+            <span class="sub-tagline">The Philosophy</span>
+            <h2>Where Time Dissolves into Stillness.</h2>
+            <p>
+              SOLÉA was imagined as a dialogue between clean coastal minimalism and warm vernacular craft. Conceived as an antidote to frantic travel, it embraces slow architecture: thick lime-washed walls that breathe with the trade winds, wide eaves offering shelter from noon warmth, and courtyards that frame the night sky.
+            </p>
+            <p>
+              Every vignette in this presentation has been constructed to demonstrate how subtle typography, restrained color balance, and purposeful layout evoke calm luxury on modern devices.
+            </p>
+
+            <div class="creator-attribution-badge">
+              <h5>Design Demonstration Notice</h5>
+              <p>
+                SOLÉA Boutique Hotel &amp; Retreat is a fictional luxury hospitality concept conceived and crafted by <strong>J.Paul Builds</strong>. It highlights bespoke design, mobile-first responsive systems, and accessible static front-end performance without third-party frameworks.
+              </p>
+            </div>
+          </div>
+
+          <div class="about-visual-composition">
+            <div class="about-main-img">
+              <img 
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80" 
+                alt="Architectural details of a tranquil sanctuary villa"
+                loading="lazy"
+                onerror="this.parentElement.classList.add('img-fallback'); this.parentElement.innerHTML='[ Architectural Courtyard ]';"
+              />
+            </div>
+            <div class="about-accent-card">
+              <span>Concept Study</span>
+              <strong>Slow Living Design</strong>
+              <p style="font-size: 0.76rem; opacity: 0.8; margin-top: 4px;">By J.Paul Builds &bull; Nairobi / Coastal Kenya</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         G. CONTACT & ENQUIRIES
+         ====================================================================== -->
+    <section class="section-padding" id="contact">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-details">
+            <div>
+              <span class="sub-tagline">Begin the Conversation</span>
+              <h2 class="heading-section">Enquire About Your Stay</h2>
+              <p class="lead-text">
+                Plan a quiet escape, intimate retreat, or private gathering. Please note this form functions as an interactive demonstration.
+              </p>
+            </div>
+
+            <div class="concept-disclaimer-box">
+              <h4>Demonstration Notice</h4>
+              <p>
+                This form verifies all input values locally in your browser. Upon submission, it displays a demonstration receipt confirming that <strong>no email or booking request is sent to a real hotel</strong>.
+              </p>
+            </div>
+
+            <div class="contact-channel-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div>
+                <h5>Design Inquiries &amp; Studio</h5>
+                <p>concept-demo@jpaulbuilds.test (Demo only)</p>
+              </div>
+            </div>
+
+            <div class="contact-channel-item">
+              <div class="contact-icon-box">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </div>
+              <div>
+                <h5>Fictional Location</h5>
+                <p>Coastal Coast Ridge, Kilifi / Diani &bull; Kenya (Illustrative)</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Form -->
+          <div class="enquiry-form-card">
+            <form id="enquiryForm" onsubmit="handleEnquirySubmit(event)" novalidate>
+              <div class="form-row two-col">
+                <div class="form-group">
+                  <label for="guestName">Full Name *</label>
+                  <input type="text" id="guestName" class="form-control" placeholder="e.g. Elena Wangari" required />
+                  <span class="error-msg" id="nameError">Please enter your name.</span>
+                </div>
+                <div class="form-group">
+                  <label for="guestEmail">Email Address *</label>
+                  <input type="email" id="guestEmail" class="form-control" placeholder="name@domain.com" required />
+                  <span class="error-msg" id="emailError">Please enter a valid email address.</span>
+                </div>
+              </div>
+
+              <div class="form-row two-col">
+                <div class="form-group">
+                  <label for="suiteInterest">Preferred Suite</label>
+                  <select id="suiteInterest" class="form-control">
+                    <option value="Garden Suite">Garden Suite (from KSh 38,500)</option>
+                    <option value="Signature Suite">Signature Suite (from KSh 52,000)</option>
+                    <option value="Horizon Suite">Horizon Suite (from KSh 76,000)</option>
+                    <option value="Whole Property / Private Buyout">Whole Retreat Buyout</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="guestCount">Guest Count</label>
+                  <select id="guestCount" class="form-control">
+                    <option value="1">1 Adult</option>
+                    <option value="2" selected>2 Adults</option>
+                    <option value="3">3 Adults</option>
+                    <option value="4+">4+ Adults / Small Group</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row two-col">
+                <div class="form-group">
+                  <label for="dateArrival">Estimated Arrival *</label>
+                  <input type="date" id="dateArrival" class="form-control" required />
+                  <span class="error-msg" id="arrivalError">Please select an arrival date.</span>
+                </div>
+                <div class="form-group">
+                  <label for="dateDeparture">Estimated Departure *</label>
+                  <input type="date" id="dateDeparture" class="form-control" required />
+                  <span class="error-msg" id="departureError">Departure must be after arrival.</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="guestMessage">Special Wishes or Inquiries</label>
+                <textarea id="guestMessage" class="form-control" placeholder="Dietary preferences, wellness rituals, or celebration notes..."></textarea>
+              </div>
+
+              <div class="submit-wrap">
+                <button type="submit" class="btn btn-gold" style="width: 100%;">
+                  Send Concept Enquiry
+                </button>
+              </div>
+
+              <!-- Demo Feedback Output -->
+              <div class="demo-submission-result" id="demoResultNotice" role="status">
+                <h4>Demo Submission Received</h4>
+                <p id="demoResultSummary"></p>
+                <p style="margin-top: 0.6rem; font-size: 0.78rem; color: #4B6050;">
+                  <strong>Note:</strong> This is an independent concept demonstration by J.Paul Builds. No transaction or reservation has occurred.
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       SUITE DETAILS MODAL
+       ======================================================================== -->
+  <div class="suite-modal" id="suiteModal" role="dialog" aria-modal="true" aria-label="Suite Details">
+    <div class="suite-modal-dialog">
+      <button class="suite-modal-close" onclick="closeSuiteModal()" aria-label="Close Suite Modal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <img src="" alt="" class="suite-modal-img" id="modalSuiteImg" />
+      <div class="suite-modal-body">
+        <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem;">
+          <h3 class="suite-title" id="modalSuiteTitle">Suite Title</h3>
+          <span style="font-family: var(--font-serif); font-size: 1.4rem; color: var(--color-green); font-weight: 600;" id="modalSuitePrice">KSh 00,000</span>
+        </div>
+        <p style="font-size: 0.95rem; color: var(--color-charcoal-muted); line-height: 1.6; margin-bottom: 1.5rem;" id="modalSuiteDesc"></p>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="closeSuiteModal()">Close</button>
+          <button type="button" class="btn btn-gold btn-sm" id="modalEnquireBtn">Enquire For This Suite</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top Float Button -->
+  <button class="back-to-top" id="backToTopBtn" onclick="scrollToTop()" aria-label="Back to top of page">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="brand-name" style="font-family: var(--font-serif); font-size: 1.8rem; letter-spacing: 0.2em;">SOLÉA</div>
+          <div style="font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-gold); margin-top: 3px;">Boutique Hotel &amp; Retreat</div>
+          <p class="footer-desc">
+            An independent hospitality web design concept highlighting organic luxury, unhurried wellness, and mobile-first static architecture.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#stay">Sanctuary Suites</a></li>
+            <li><a href="#dining">Culinary &amp; Hearth</a></li>
+            <li><a href="#experiences">Experiences</a></li>
+            <li><a href="#gallery">Visual Gallery</a></li>
+            <li><a href="#about">The Concept</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-heading">Portfolio Concept</h4>
+          <p style="font-size: 0.85rem; color: rgba(247, 243, 234, 0.7); line-height: 1.6; margin-bottom: 1rem;">
+            Designed to showcase custom creative front-end standards without third-party frameworks or bloated tracking scripts.
+          </p>
+          <a href="#contact" class="btn btn-outline btn-sm" style="color: var(--color-ivory); border-color: rgba(255,255,255,0.25);">
+            Test Enquiry Form
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; <span id="currentYear"></span> SOLÉA Concept. Independent design demo by <span class="builder-tag">J.Paul Builds</span>.
+        </div>
+        <div>
+          Fictional property &bull; Illustrative Kenya Shilling rates &bull; No live bookings
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       JAVASCRIPT INTERACTIONS
+       ======================================================================== -->
+  <script>
+    // Set current year
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+    // Set minimum date for date inputs to today
+    const now = new Date();
+    const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+    const dateInputs = ['searchArrival', 'searchDeparture', 'dateArrival', 'dateDeparture'];
+    dateInputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.min = today;
+    });
+
+    function linkDatePair(arrivalId, departureId) {
+      const arrival = document.getElementById(arrivalId);
+      const departure = document.getElementById(departureId);
+      if (!arrival || !departure) return;
+      arrival.addEventListener('change', () => {
+        departure.min = arrival.value || today;
+        if (departure.value && arrival.value && departure.value <= arrival.value) {
+          departure.value = '';
+        }
+      });
+    }
+    linkDatePair('searchArrival', 'searchDeparture');
+    linkDatePair('dateArrival', 'dateDeparture');
+
+    // ------------------------------------------------------------------------
+    // Mobile Drawer Navigation
+    // ------------------------------------------------------------------------
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMenu() {
+      const isOpen = mobileDrawer.classList.toggle('open');
+      menuToggle.classList.toggle('active', isOpen);
+      menuToggle.setAttribute('aria-expanded', isOpen);
+    }
+
+    menuToggle.addEventListener('click', toggleMenu);
+
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('open');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close mobile drawer on Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (mobileDrawer.classList.contains('open')) toggleMenu();
+        closeLightbox();
+        closeSuiteModal();
+      }
+    });
+
+    // ------------------------------------------------------------------------
+    // Active Nav Highlight & Back to Top on Scroll
+    // ------------------------------------------------------------------------
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-desktop .nav-link');
+
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+
+      // Back to top appearance
+      if (scrollPos > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+
+      // Active section indicator
+      let currentSectionId = '';
+      sections.forEach(section => {
+        const top = section.offsetTop - 120;
+        const height = section.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionId = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSectionId}`) {
+          link.classList.add('active');
+        }
+      });
+    }, { passive: true });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ------------------------------------------------------------------------
+    // Availability Search Bar Logic
+    // ------------------------------------------------------------------------
+    function handleAvailabilitySearch(e) {
+      e.preventDefault();
+      const arrival = document.getElementById('searchArrival').value;
+      const departure = document.getElementById('searchDeparture').value;
+      const guests = document.getElementById('searchGuests').value;
+
+      if (!arrival || !departure) {
+        alert('Please select both arrival and departure dates.');
+        return;
+      }
+
+      if (new Date(departure) <= new Date(arrival)) {
+        alert('Departure date must be after arrival date.');
+        return;
+      }
+
+      // Mirror search query into the enquiry form below
+      const dateArrival = document.getElementById('dateArrival');
+      const dateDeparture = document.getElementById('dateDeparture');
+      const guestCount = document.getElementById('guestCount');
+
+      if (dateArrival) dateArrival.value = arrival;
+      if (dateDeparture) dateDeparture.value = departure;
+      if (guestCount) guestCount.value = guests;
+
+      // Smooth scroll to suites section
+      const staySection = document.getElementById('stay');
+      staySection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ------------------------------------------------------------------------
+    // Suite Selection and Modal
+    // ------------------------------------------------------------------------
+    const suiteModal = document.getElementById('suiteModal');
+    const modalSuiteTitle = document.getElementById('modalSuiteTitle');
+    const modalSuitePrice = document.getElementById('modalSuitePrice');
+    const modalSuiteDesc = document.getElementById('modalSuiteDesc');
+    const modalSuiteImg = document.getElementById('modalSuiteImg');
+    const modalEnquireBtn = document.getElementById('modalEnquireBtn');
+
+    function openSuiteModal(title, desc, price, imgUrl) {
+      modalSuiteTitle.textContent = title;
+      modalSuiteDesc.textContent = desc;
+      modalSuitePrice.textContent = price;
+      modalSuiteImg.src = imgUrl;
+      modalSuiteImg.alt = title;
+      modalSuiteImg.onerror = () => { modalSuiteImg.removeAttribute('src'); modalSuiteImg.alt = title + ' image unavailable'; };
+
+      modalEnquireBtn.onclick = () => {
+        closeSuiteModal();
+        selectSuiteForEnquiry(title);
+      };
+
+      suiteModal.classList.add('active');
+    }
+
+    function closeSuiteModal() {
+      suiteModal.classList.remove('active');
+    }
+
+    suiteModal.addEventListener('click', (e) => {
+      if (e.target === suiteModal) closeSuiteModal();
+    });
+
+    function selectSuiteForEnquiry(suiteName) {
+      const select = document.getElementById('suiteInterest');
+      if (select) {
+        for (let i = 0; i < select.options.length; i++) {
+          if (select.options[i].value.includes(suiteName)) {
+            select.selectedIndex = i;
+            break;
+          }
+        }
+      }
+      const contactSection = document.getElementById('contact');
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('guestName').focus();
+    }
+
+    // ------------------------------------------------------------------------
+    // Lightbox Functionality
+    // ------------------------------------------------------------------------
+    const galleryItems = [
+      {
+        src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1600&q=85',
+        caption: 'The Observation Deck & Golden Hour Veranda'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1600&q=85',
+        caption: 'Coastal Umbrellas & Afternoon Pool Reflections'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=85',
+        caption: 'Morning Pantry Pour-Over & Fresh Roast Rituals'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&w=1600&q=85',
+        caption: 'Minimalist Natural Stone & Tactile Interior Finishes'
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&w=1600&q=85',
+        caption: 'Untouched Coastal Shoreline & Tide Pool Walk'
+      }
+    ];
+
+    // Make gallery tiles keyboard accessible (Enter or Space opens the image).
+    document.querySelectorAll('.gallery-thumbnail[role="button"]').forEach((tile) => {
+      tile.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          tile.click();
+        }
+      });
+    });
+
+    let currentLightboxIdx = 0;
+    const lightboxModal = document.getElementById('lightboxModal');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    function openLightbox(index) {
+      currentLightboxIdx = index;
+      updateLightboxContent();
+      lightboxModal.classList.add('active');
+    }
+
+    function closeLightbox() {
+      lightboxModal.classList.remove('active');
+    }
+
+    function updateLightboxContent() {
+      const item = galleryItems[currentLightboxIdx];
+      lightboxImage.onerror = () => { lightboxImage.alt = item.caption + ' (image unavailable)'; };
+      lightboxImage.src = item.src;
+      lightboxImage.alt = item.caption;
+      lightboxCaption.textContent = item.caption;
+    }
+
+    function prevLightboxImage() {
+      currentLightboxIdx = (currentLightboxIdx - 1 + galleryItems.length) % galleryItems.length;
+      updateLightboxContent();
+    }
+
+    function nextLightboxImage() {
+      currentLightboxIdx = (currentLightboxIdx + 1) % galleryItems.length;
+      updateLightboxContent();
+    }
+
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) closeLightbox();
+    });
+
+    // ------------------------------------------------------------------------
+    // Form Validation & Demonstration Feedback
+    // ------------------------------------------------------------------------
+    function handleEnquirySubmit(e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('guestName');
+      const emailInput = document.getElementById('guestEmail');
+      const arrivalInput = document.getElementById('dateArrival');
+      const departureInput = document.getElementById('dateDeparture');
+      const suiteInput = document.getElementById('suiteInterest');
+      const guestCount = document.getElementById('guestCount');
+
+      const nameError = document.getElementById('nameError');
+      const emailError = document.getElementById('emailError');
+      const arrivalError = document.getElementById('arrivalError');
+      const departureError = document.getElementById('departureError');
+      const resultNotice = document.getElementById('demoResultNotice');
+      const resultSummary = document.getElementById('demoResultSummary');
+
+      let isValid = true;
+
+      // Validate Name
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('is-invalid');
+        nameError.classList.add('visible');
+        isValid = false;
+      } else {
+        nameInput.classList.remove('is-invalid');
+        nameError.classList.remove('visible');
+      }
+
+      // Validate Email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailInput.value.trim() || !emailRegex.test(emailInput.value.trim())) {
+        emailInput.classList.add('is-invalid');
+        emailError.classList.add('visible');
+        isValid = false;
+      } else {
+        emailInput.classList.remove('is-invalid');
+        emailError.classList.remove('visible');
+      }
+
+      // Validate Arrival
+      if (!arrivalInput.value) {
+        arrivalInput.classList.add('is-invalid');
+        arrivalError.classList.add('visible');
+        isValid = false;
+      } else {
+        arrivalInput.classList.remove('is-invalid');
+        arrivalError.classList.remove('visible');
+      }
+
+      // Validate Departure
+      if (!departureInput.value || new Date(departureInput.value) <= new Date(arrivalInput.value)) {
+        departureInput.classList.add('is-invalid');
+        departureError.classList.add('visible');
+        isValid = false;
+      } else {
+        departureInput.classList.remove('is-invalid');
+        departureError.classList.remove('visible');
+      }
+
+      if (!isValid) {
+        resultNotice.classList.remove('visible');
+        return;
+      }
+
+      // Success Demonstration State
+      const summaryText = `Thank you, ${nameInput.value.trim()}. Your interest in the ${suiteInput.value} for ${guestCount.value} guest(s) from ${arrivalInput.value} to ${departureInput.value} has been verified locally.`;
+      
+      resultSummary.textContent = summaryText;
+      resultNotice.classList.add('visible');
+      resultNotice.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>
